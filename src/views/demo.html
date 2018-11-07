@@ -1,0 +1,32 @@
+@@include('base-header.html', {
+  "title": "demo页面"
+})
+  
+<div style="margin: 0 auto; text-align:center; padding-top: 16px ">
+  <a href="/">返回首页</a>
+  <h2>demo页面</h2>
+</div>
+<div id="artmtep">
+
+</div>
+  
+
+<script src="/static/lib/template-web.js"></script>
+
+<script id="arttest" type="text/html">
+  <div>
+    <h2>{{user.title}}</h2>
+  </div>
+</script>
+
+<script>
+  var a = template('arttest', {
+    user: {
+      title: 'art template'
+    }
+  });
+  document.getElementById('artmtep').innerHTML =  a
+</script>
+
+<script src="../static/js/demo.js"></script>
+@@include('base-footer.html')

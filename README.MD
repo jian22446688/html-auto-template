@@ -82,7 +82,7 @@ useEslint: false // 是否启用eslint
 ```
 
 ## 使用webpack
-* 集成webpack功能，可以自行选择 默认已打开 webpack 功能
+* 集成webpack功能，可以自行选择 默认关闭 webpack 功能
 
 config/index.js文件
 ```

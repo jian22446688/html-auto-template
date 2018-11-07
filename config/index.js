@@ -36,6 +36,6 @@ module.exports = {
 
   server,
   useEslint: false, 
-  useWebpack: true,
+  useWebpack: false,
   productionZip: false
 }

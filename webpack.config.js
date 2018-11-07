@@ -34,7 +34,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
     alias: {
-      '@': resolve('src')
+      '@': resolve('src'),
     }
   },
 
@@ -75,6 +75,12 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    // new webpack.ProvidePlugin({
+    //   jquery: 'jquery',
+    //   $: 'jquery'
+    // })
+  ]
 }
 

@@ -22,6 +22,7 @@ const sequence = require('gulp-sequence')
 const zip = require('gulp-zip')
 const del = require('del')
 const bSync = require('browser-sync') 
+const bom = require('gulp-bom')
 
 // webpack
 const webpack = require('webpack')
@@ -88,6 +89,7 @@ gulp.task('html', () => {
       minifyJS: true,
       minifyCSS: true
     })))
+    .pipe(bom())
     .pipe(gulp.dest(config.build.html))
 })
 

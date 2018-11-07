@@ -38,6 +38,7 @@
     "eslint-plugin-import": "^2.8.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.0",
+    "gulp-bom": "^2.0.0",
     "gulp-cache": "^1.0.1",
     "gulp-clean-css": "^3.9.0",
     "gulp-eslint": "^4.0.0",
@@ -68,6 +69,7 @@
   "dependencies": {
     "art-template": "^4.13.1",
     "babel-polyfill": "^6.26.0",
+    "jquery": "^3.3.1",
     "lodash": "^4.17.11"
   }
 }
