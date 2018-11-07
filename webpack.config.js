@@ -30,8 +30,7 @@ module.exports = {
     path: __dirname + '/dist/static/',
     filename: '[name].js',
   },
-
-
+  
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
     alias: {

@@ -79,7 +79,8 @@ gulp.task('html', () => {
     .pipe(plumber(onError))
     .pipe(fileinclude({
       prefix: '@@',
-      basepath: respath('src/include/')
+      indent:true, //保留文件的缩进
+      basepath: respath('src/include/'),
     }))
     .pipe(gulpif(condition, htmlmin({
       removeComments: true,

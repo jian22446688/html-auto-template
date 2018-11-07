@@ -3,10 +3,20 @@
 
  * html-auto-template 是自动编译代码
 
+## git 地址 
+
+```
+https://github.com/jian22446688/html-auto-template.git
+```
+
 ## 项目启动
 ```
+// 安装依懒
+cd html-auto-template
+npm install
+
 // 常用命令
-开发环境： npm run dev
+开发环境： npm run dev  
 生产环境： npm run build
 
 // 单任务命令 (需要全局安装 gulp ) npm install -g gulp
@@ -17,14 +27,6 @@
 语法检测： gulp eslint
 压缩图片： gulp images
 ```
-
-## git 地址 
-
-```
-https://github.com/jian22446688/html-auto-template.git
-
-```
-
 
 ## 项目目录
 ```
@@ -80,7 +82,7 @@ useEslint: false // 是否启用eslint
 ```
 
 ## 使用webpack
-* 集成webpack功能，可以自行选择
+* 集成webpack功能，可以自行选择 默认已打开 webpack 功能
 
 config/index.js文件
 ```

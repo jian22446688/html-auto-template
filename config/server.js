@@ -1,4 +1,3 @@
-const proxy = require('./poxy')
 const url = require('url')
 const proxy = require('proxy-middleware')
 
