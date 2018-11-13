@@ -12,7 +12,8 @@ function resolveBuild(dir) {
 module.exports = {
   dev: {
     dest: './dist',
-    static: './static/**/*',
+    static: './static/**/*', // 静态资源 例如: 图片字体
+    vendor: './vendor/**/*', // 第三方资源库文件资源 例如: jquery, layer, lodash.js 
     html:  [resolveDev('/**/*.html'), '!./src/include/**/*'],
     allhtml: resolveDev('/**/*.html'),
     styles: resolveDev('static/css/*.{less,css}'),
@@ -22,6 +23,7 @@ module.exports = {
 
   build: {
     static: resolveBuild('static'),
+    vendor: resolveBuild('vendor'),
     html: resolveBuild(''),
     styles: resolveBuild('static/css'),
     script: resolveBuild('static/js'),

@@ -43,10 +43,13 @@ npm install
 │   ├── static        # 资源文件夹
 │   │   ├── images    # 图库
 │   │   ├── js        # 脚本
-│   │   └── styles    # 样式（less, css）
+│   │   └── css       # 样式（less, css）
 │   └── views         # 页面
 |
 ├── static            # 打包到dist中static文件中
+├── vendor            # 打包到dist中vendor文件中 
+|   ├──iconfont       # 淘宝图标字体库
+|   └──...            # 其他第三方库文件 例如: jquery, layer, lodash.js 
 └── webpack.config.js # webpack配置文件
 ```
 
@@ -58,7 +61,6 @@ npm install
 3、static文件夹
 * 一级目录中static文件夹，可以存放不需要编译的文件内容，比如一些插件，图片，字体文件等
 * 每次npm run dev or build 都会把static文件夹下的内容，打包到dist/static里
-
 
 ## 代理模式
 * config/server.js文件中配置
@@ -89,4 +91,29 @@ config/index.js文件
 useWebpack: false // 是否启用webpack
 ```
 
+## 模板引入
+* include 文件中的模板
+```
+<div>
+    @@include('header.html', {
+        "title": "indexPage"
+    })
+</div>
+```
 
+## 添加 淘宝字体  
+* 打开 http://www.iconfont.cn/ 
+* 搜索需要的字体添加到购物车中
+* 点击购物车 
+* 点击 <下载代码> 字体包 
+
+```
+
+  使用步骤如下：
+    // 第一步：引入项目下面生成的fontclass代码：
+    <link rel="stylesheet" type="text/css" href="./iconfont.css">
+  
+    //第二步：挑选相应图标并获取类名，应用于页面：
+    <i class="iconfont icon-xxx"></i>
+    
+```

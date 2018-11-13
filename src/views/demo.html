@@ -1,32 +1,121 @@
-@@include('base-header.html', {
-  "title": "demo页面"
-})
-  
-<div style="margin: 0 auto; text-align:center; padding-top: 16px ">
-  <a href="/">返回首页</a>
-  <h2>demo页面</h2>
-</div>
-<div id="artmtep">
+<!doctype html>
+<html class="no-js" lang="">
 
-</div>
-  
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>demo 页面</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+  <!-- <link rel="apple-touch-icon" href="icon.png"> -->
+  <!-- Place favicon.ico in the root directory -->
 
-<script src="/static/lib/template-web.js"></script>
+  <link rel="stylesheet" type="text/css" href="/static/lib/normalize.css">
+  <link rel="stylesheet" type="text/css" href="/static/lib/main.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/demo.css">
 
-<script id="arttest" type="text/html">
-  <div>
-    <h2>{{user.title}}</h2>
+</head>
+
+<body>
+  <!--[if lte IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+  <!-- Add your site or application content here -->
+
+  <div class="main-wrap">
+    <div style="margin: 0 auto; text-align:center; padding-top: 16px ">
+      <a href="/">返回首页</a>
+      <h2>demo页面</h2>
+    </div>
+    <div id="artmtep">
+    
+    </div>
+    
+    <script src="/static/lib/template-web.js"></script>
+    
+    <script id="arttest" type="text/html">
+      <div>
+        <h2>{{user.title}}</h2>
+      </div>
+    </script>
+    
   </div>
-</script>
+
+  <div class="d-container d-w-color">
+      <h2>f</h2>
+
+      <!-- <div class="d-c-container clearfix">
+
+        <div class="d-c-div1">
+          RES
+        </div>
+        <div class="d-c-div2">
+          ERA
+        </div>
+      </div> -->
+
+      <!-- 引用模板 -->
+      <!-- @@include('header.html', {
+        "title": "indexPage"
+      }) -->
+
+      <div id="d_test">
+
+      </div>
+
+      <!-- <div class="d-c-container clearfix">
+
+        <div class="d-c-div1">
+          RES
+        </div>
+        <div class="d-c-div2 ">
+          ERA
+        </div>
+        
+      </div> -->
+
+  </div>
+
 
 <script>
   var a = template('arttest', {
     user: {
-      title: 'art template'
+      title: 'art template paging'
     }
   });
   document.getElementById('artmtep').innerHTML =  a
 </script>
 
+<script src="/static/lib/modernizr-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+<script src="/static/lib/plugins.js"></script>
+
+<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+<script>
+  window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+  ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/static/lib/lodash.js"></script>
+
+<script>
+  $(function(){
+
+    var a = ['d', 'b']
+    console.log(_.isArray(a))
+    
+  })
+
+
+</script>
+
+
 <script src="../static/js/demo.js"></script>
-@@include('base-footer.html')
+</body>
+</html>

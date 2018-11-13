@@ -23,6 +23,8 @@ const zip = require('gulp-zip')
 const del = require('del')
 const bSync = require('browser-sync') 
 const bom = require('gulp-bom')
+const chokidar = require('chokidar');
+const _ = require('lodash')
 
 // webpack
 const webpack = require('webpack')
@@ -134,9 +136,16 @@ gulp.task('script', useEslint, () => {
     .pipe(gulp.dest(config.build.script))
 })
 
+// 静态资源 例如: 图片字体
 gulp.task('static', () => {
   return gulp.src(config.dev.static)
     .pipe(gulp.dest(config.build.static))
+})
+
+// 第三方资源库文件资源 例如: jquery, layer, lodash.js 
+gulp.task('vendor', ()=> {
+  return gulp.src(config.dev.vendor)
+    .pipe(gulp.dest(config.build.vendor))
 })
 
 gulp.task('clean', () => {
@@ -146,12 +155,13 @@ gulp.task('clean', () => {
 })
 
 gulp.task('watch', () => {
-  // BrowserSync 监听 dist 目录
+  // BrowserSync 监听 dist 目录 不监听文件的新增
   gulp.watch(config.dev.allhtml, ['html']).on('change', reload)
   gulp.watch(config.dev.styles, ['styles']).on('change', reload)
   gulp.watch(config.dev.script, ['script']).on('change', reload)
   gulp.watch(config.dev.images, ['images']).on('change', reload)
   gulp.watch(config.dev.static, ['static']).on('change', reload)
+  gulp.watch(config.dev.vendor, ['vendor']).on('change', reload)
 })
 
 gulp.task('zip', () => {
@@ -162,7 +172,7 @@ gulp.task('zip', () => {
 })
 
 gulp.task('server', () => {
-  const task = ['html', 'styles', 'script', 'images', 'static']
+  const task = ['html', 'styles', 'script', 'images', 'static', 'vendor']
   cbTask(task).then(() => {
     browserSync.init(config.server)
     console.log(chalk.cyan('  Server complete.\n'))
@@ -171,7 +181,7 @@ gulp.task('server', () => {
 })
 
 gulp.task('build', () => {
-  const task = ['html', 'styles', 'script', 'images', 'static']
+  const task = ['html', 'styles', 'script', 'images', 'static', 'vendor']
   cbTask(task).then(() => {
     console.log(chalk.cyan('  Build complete.\n'))
     if (config.productionZip) {

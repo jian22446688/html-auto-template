@@ -45,7 +45,7 @@ module.exports = {
   //不显示在浏览器中的任何通知。
   notify: false,
   // 刷新浏览器时 重新启动 Browsersync 
-  // reloadOnRestart: true,
+  reloadOnRestart: true,
   //等待2秒钟之前的任何浏览器应该尝试注入/加载的文件。 
   // reloadDelay: 500
 }
