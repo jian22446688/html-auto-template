@@ -1,0 +1,163 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>demo 页面</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+  <!-- <link rel="apple-touch-icon" href="icon.png"> -->
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" type="text/css" href="/static/lib/normalize.css">
+  <link rel="stylesheet" type="text/css" href="/static/lib/main.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/le/index.css">
+
+</head>
+
+<body>
+  <!--[if lte IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+  <!-- Add your site or application content here -->
+  
+  <div class="l-container">
+    <div class="l-header"></div>
+    <div class="l-carsousel">
+      <ul class="carsousel">
+        <li><a href="#"><img src="/static/images/b_2.jpeg" alt=""></a></li>
+        <li><a href="#"><img src="/static/images/b_1.jpeg" alt=""></a></li>
+        <li><a href="#"><img src="/static/images/b3.jpeg" alt=""></a></li>
+        <li><a href="#"><img src="/static/images/b_1.jpeg" alt=""></a></li>
+      </ul>
+      <div class="previous"></div>
+      <div class="next"></div>
+      <ul class="l-dot">
+        <li class="l-dot-active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="l-black"></div>
+    <!-- <div class="l-content">
+      <div class="l-content-item">
+        <div class="item-t">
+          <div class="cover">
+            <img src="" alt="">
+          </div>
+          <div class="text">
+            <h2></h2>
+            <span class="l-btn-call">解解解解</span>
+            <span class="l-btn-call">解解解解</span>
+          </div>
+        </div>
+        <div class="item-b"></div>
+      </div>
+    </div> -->
+
+    <div class="l-footer">
+      footer
+    </div>
+
+  </div>
+
+  <div id="d_test">
+    
+  </div>
+
+<script src="/static/lib/template-web.js"></script>
+<script id="arttest" type="text/html">
+  <div>
+    <h2>{{user.title}}</h2>
+  </div>
+</script>
+<script>
+  var a = template('arttest', {
+    user: {
+      title: 'art template paging'
+    }
+  });
+  document.getElementById('arttest').innerHTML =  a
+</script>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="/static/lib/plugins.js"></script>
+<script src="/static/lib/lodash.js"></script>
+<script>
+  $(function(){
+    var a = ['d', 'b']
+    
+    // 轮播 当前页
+    var carsouselCur = 0
+    var carsouselLock = true
+    var autoLook = 3000
+    // 正反
+    var _PAN = true 
+    $('.carsousel li').each(function(i){
+      $(this).css('left',($(this).width() * i) + 'px')
+    })
+    $('.previous').click(function(){
+      _dot(carsouselCur + 1)
+    })
+    $('.next').click(function(){
+      _dot(carsouselCur - 1)
+    })
+    $('.l-dot li').click(function(e){
+      _dot($(this).index())
+    })
+    
+    // 轮播滚动后事件
+    function animateFinish() {
+      $('.l-dot li').removeClass('l-dot-active')
+      $('.l-dot li:eq('+ carsouselCur +')').addClass('l-dot-active')
+    }
+    
+    function _dot(index) {
+      var count = $('.carsousel li').length
+      if(carsouselCur == index || index >= count || index < 0 || !carsouselLock) return 
+      carsouselLock = false
+      var _cur = $('.carsousel li:eq('+ index +')')
+      var _nex = $('.carsousel li:eq('+ carsouselCur +')')
+      var rl = index > carsouselCur
+      _cur.css({left: rl ? '-1080px' : '1080px'}, 500)
+      _nex.animate({left: rl ? '1080px' : '-1080px'}, 500)
+      _cur.animate({left: '0px'}, 500, function(){
+        carsouselCur = index
+        carsouselLock = true
+        animateFinish()
+      })
+    }
+    
+    //  实现 自动轮播 功能
+    // 自动轮播
+    setInterval(function() {
+      var count = $('.carsousel li').length
+      if(carsouselCur + 1 >= count){
+        _PAN = false
+      }
+      if(carsouselCur + 1 == 1){
+        _PAN = true
+      }
+      if(_PAN){
+        _dot(carsouselCur + 1)
+      }
+      if(!_PAN) {
+        _dot(carsouselCur - 1)
+      }
+    }, autoLook)
+  
+
+    
+
+
+
+
+  })
+</script>
+</body>
+</html>

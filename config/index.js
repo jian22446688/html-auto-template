@@ -16,9 +16,9 @@ module.exports = {
     vendor: './vendor/**/*', // 第三方资源库文件资源 例如: jquery, layer, lodash.js 
     html:  [resolveDev('/**/*.html'), '!./src/include/**/*'],
     allhtml: resolveDev('/**/*.html'),
-    styles: resolveDev('static/css/*.{less,css}'),
+    styles: resolveDev('static/css/**/*.{less,css}'),
     script: [resolveDev('static/js/**/*.js'), '!./src/static/js/lib/**/*'],
-    images: resolveDev('static/images/**/*.{png,jpg,gif,svg}'),
+    images: resolveDev('static/images/**/*.{png,jpg,jpeg,gif,svg}'),
   },
 
   build: {
